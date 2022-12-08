@@ -24,9 +24,9 @@ void DrawWidget::paintEvent(QPaintEvent *event)
     for(i = 0; i < n; i++){
         for(j = 0; j < m; j++){
             qDebug() << j;
-            linha[j] = 1;
+            linha.push_back(0);
         }
-        //matriz.push_back(linha);
+        matriz.push_back(linha);
     }
 
     painter.setRenderHint(QPainter::Antialiasing);
@@ -54,15 +54,19 @@ void DrawWidget::paintEvent(QPaintEvent *event)
                          height());
     }
 
-    /*for(int i=0; i<m; i++){
+    
+
+    for(int i=0; i<m; i++){
         for(int j=0; i<n; j++){
             if(matriz[i][j] == 1){
-
+		painter.drawEllipse();
             }else{
-
+		painter.drawRect();
             }
         }
-    }*/
+    }
+
+    
 
 
 
