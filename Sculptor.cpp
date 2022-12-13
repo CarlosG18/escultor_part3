@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "Sculptor.h"
+#include <vector>
 
 Sculptor::~Sculptor()
 {
@@ -203,6 +204,25 @@ void Sculptor::writeOFF(const char* filename){
             }
         }
     file.close();
+}
+
+vector <vector <Voxel> > Sculptor::getPlano(int z){
+  vector <vector <Voxel> > retorno;
+  vector<Voxel> linha;
+  int i,j;
+
+  for(i = 0; i<nx; i++){
+    for(j = 0; j<ny; j++){
+      linha[j].r = v[i][j][z].r;
+      linha[j].g = v[i][j][z].g;
+      linha[j].b = v[i][j][z].b;
+      linha[j].a = v[i][j][z].a;
+      linha[j].isOn = v[i][j][z].isOn;
+    }
+    retorno.push_back(linha);
+  }
+  
+  
 }
 
 

@@ -109,6 +109,7 @@ class Sculptor
        * @param filename é o arquivo de saída no formato off resultante
        */
       void writeOFF(const char* filename);
+      vector <vector<Voxel> > getPlano(int z);
 };
 
 #endif // SCULPTOR_H

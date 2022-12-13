@@ -9,9 +9,10 @@ class DrawWidget : public QWidget
 public:
     explicit DrawWidget(QWidget *parent = nullptr);
     void paintEvent(QPaintEvent *event);
-
+    void mousePressEvent(QMouseEvent *event);
 signals:
-
+    void transformarX(int x);
+    void transformarY(int y);
 public slots:
 };
 
