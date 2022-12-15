@@ -206,9 +206,9 @@ void Sculptor::writeOFF(const char* filename){
     file.close();
 }
 
-vector <vector <Voxel> > Sculptor::getPlano(int z){
-  vector <vector <Voxel> > retorno;
-  vector<Voxel> linha;
+std::vector<std::vector<Voxel>> Sculptor::getPlano(int z){
+  std::vector<std::vector<Voxel>> retorno;
+  std::vector<Voxel> linha;
   int i,j;
 
   for(i = 0; i<nx; i++){
