@@ -15,15 +15,16 @@ private:
   int largCel, altCel;
   bool pressed;
 public:
-    explicit DrawWidget(QWidget *parent = nullptr);
-    void paintEvent(QPaintEvent *event);
-    void mousePressEvent(QMouseEvent *event);
-    void setTamanho(int nlinhas, int ncolunas);
-    void loadMatrix(std::vector<std::vector<Voxel>> l);
+  explicit DrawWidget(QWidget *parent = nullptr);
+  void paintEvent(QPaintEvent *event);
+  void mousePressEvent(QMouseEvent *event);
+  void setTamanho(int nlinhas, int ncolunas);
+  void loadMatrix(std::vector<std::vector<Voxel>> l);
 signals:
-    void transformarX(int x);
-    void transformarY(int y);
+  void transformarX(int x);
+  void transformarY(int y);
 public slots:
+  void mudaZ(int z);
 };
 
 #endif // DRAWWIDGET_H

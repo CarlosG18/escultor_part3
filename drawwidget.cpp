@@ -15,7 +15,7 @@ void DrawWidget::paintEvent(QPaintEvent *event)
 {
   int i, j;
   Sculptor s(nlinhas,ncolunas,planoZ)
-  loadMatrix(s.getPlano(5))
+  loadMatrix(s.getPlano(planoZ))
   
   QPainter painter(this); //"artista"
   QBrush brush; //"preenchimento"
@@ -46,7 +46,7 @@ void DrawWidget::paintEvent(QPaintEvent *event)
 }
 
 void DrawWidget::mousePressEvent(QMouseEvent *event){
-  qDebug() << event->x() << event->y();
+  //qDebug() << event->x() << event->y();
   emit transformarX(event->x());
   emit transformaY(event->y());
 }
@@ -67,6 +67,10 @@ void DrawWidget::loadMatrix(std::vector<std::vector<Voxel>> l){
     }
     v.push_back(linha);
   }
+}
+
+void DrawWidget::mudaZ(int z){
+  this->planoZ = z;
 }
 
 void DrawWidget::setTamanho(int nlinhas, int ncolunas){
