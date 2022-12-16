@@ -14,6 +14,7 @@ private:
   int tamCel;
   int largTela, altTela;
   int largCel, altCel;
+  float r, g, b, a;
   bool pressed;
 public:
   explicit DrawWidget(QWidget *parent = nullptr);
@@ -27,6 +28,10 @@ signals:
   void mudaY(int y);
 public slots:
   void mudaZ(int z);
+  void setR(float r);
+  void setG(float g);
+  void setB(float b);
+  void setA(float a);
 };
 
 #endif // DRAWWIDGET_H

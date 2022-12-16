@@ -19,6 +19,7 @@ void DrawWidget::paintEvent(QPaintEvent *event)
   std::vector<std::vector<Voxel>> l;
 
   Sculptor s(nlinhas,ncolunas,planoZ);
+  s.setColor(r,g,b,a);
   loadMatrix(s.getPlano(planoZ));
   
   QPainter painter(this); //"artista"
@@ -53,6 +54,9 @@ void DrawWidget::paintEvent(QPaintEvent *event)
 
 void DrawWidget::mousePressEvent(QMouseEvent *event){
   //qDebug() << event->x();
+  /*
+  
+  */
   emit mudaX(event->x()/largCel);
   emit mudaY(event->y()/altCel);
 }
@@ -83,6 +87,22 @@ void DrawWidget::loadMatrix(std::vector<std::vector<Voxel>> l){
 
 void DrawWidget::mudaZ(int z){
   this->planoZ = z;
+}
+
+void DrawWidget::setR(float r){
+  this->r = r;
+}
+
+void DrawWidget::setG(float g){
+  this->g = g;
+}
+
+void DrawWidget::setB(float b){
+  this->b = b;
+}
+
+void DrawWidget::setB(float a){
+  this->a = a;
 }
 
 void DrawWidget::setTamanho(int nlinhas, int ncolunas){

@@ -13,6 +13,21 @@ MainWindow::MainWindow(QWidget *parent) :
           ui->widget,
           SLOT(mudaZ(int)));
           
+  connect(ui->horizontalSliderR,
+          SIGNAL(valueChanged(int)),
+          ui->widget,
+          SLOT(setR(float)));
+          
+  connect(ui->horizontalSliderG,
+          SIGNAL(valueChanged(int)),
+          ui->widget,
+          SLOT(setG(float)));
+          
+  connect(ui->horizontalSliderB,
+          SIGNAL(valueChanged(int)),
+          ui->widget,
+          SLOT(setB(float)));
+          
   connect(ui->widget,
           SIGNAL(mudaX(int)),
           ui->lcdNumberX,
