@@ -17,14 +17,14 @@
    <widget class="DrawWidget" name="widget" native="true">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>30</y>
-      <width>431</width>
-      <height>281</height>
+      <x>70</x>
+      <y>20</y>
+      <width>651</width>
+      <height>411</height>
      </rect>
     </property>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>730</x>
@@ -42,7 +42,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLCDNumber" name="lcdNumber_x">
+      <widget class="QLCDNumber" name="lcdNumberX">
        <property name="frameShadow">
         <enum>QFrame::Plain</enum>
        </property>
@@ -56,11 +56,44 @@
       </widget>
      </item>
      <item>
-      <widget class="QLCDNumber" name="lcdNumber_y">
+      <widget class="QLCDNumber" name="lcdNumberY">
        <property name="frameShadow">
         <enum>QFrame::Plain</enum>
        </property>
       </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>440</y>
+      <width>591</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>eixo Z</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSlider" name="horizontalSliderZ">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QLCDNumber" name="lcdNumber"/>
      </item>
     </layout>
    </widget>
@@ -95,5 +128,22 @@
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>horizontalSliderZ</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>lcdNumber</receiver>
+   <slot>display(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>516</x>
+     <y>505</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>744</x>
+     <y>492</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

@@ -1,5 +1,6 @@
 #ifndef SCULPTOR_H
 #define SCULPTOR_H
+#include <vector>
 
 struct Voxel{
     float r, g, b; // cores: vermelho, verde e azul
@@ -109,7 +110,7 @@ class Sculptor
        * @param filename é o arquivo de saída no formato off resultante
        */
       void writeOFF(const char* filename);
-      vector <vector<Voxel> > getPlano(int z);
+      std::vector <std::vector<Voxel> > getPlano(int z);
 };
 
 #endif // SCULPTOR_H

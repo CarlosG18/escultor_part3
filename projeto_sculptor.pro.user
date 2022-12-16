@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.5.1, 2022-12-07T08:23:22. -->
+<!-- Written by QtCreator 4.5.1, 2022-12-16T07:49:31. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -1261,8 +1261,8 @@
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
     <value type="QString" key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName">projeto_sculptor</value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName"></value>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/SUPORTE/Documents/carlos/projeto_sculptor/projeto_sculptor.pro</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.DisplayName">projeto_sculptor2</value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/SUPORTE/Documents/carlos/escultor_part3-main/projeto_sculptor.pro</value>
     <value type="bool" key="QmakeProjectManager.QmakeRunConfiguration.UseLibrarySearchPath">true</value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.CommandLineArguments"></value>
     <value type="QString" key="Qt4ProjectManager.Qt4RunConfiguration.ProFile">projeto_sculptor.pro</value>

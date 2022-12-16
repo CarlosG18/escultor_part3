@@ -2,6 +2,7 @@
 #include <fstream>
 #include "Sculptor.h"
 #include <vector>
+#include <QDebug>
 
 Sculptor::~Sculptor()
 {
@@ -212,6 +213,7 @@ std::vector<std::vector<Voxel>> Sculptor::getPlano(int z){
   int i,j;
 
   for(i = 0; i<nx; i++){
+    linha.resize(ny);
     for(j = 0; j<ny; j++){
       linha[j].r = v[i][j][z].r;
       linha[j].g = v[i][j][z].g;
@@ -222,6 +224,7 @@ std::vector<std::vector<Voxel>> Sculptor::getPlano(int z){
     retorno.push_back(linha);
   }
   
+  return retorno;
   
 }
 

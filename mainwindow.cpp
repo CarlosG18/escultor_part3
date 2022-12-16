@@ -14,12 +14,12 @@ MainWindow::MainWindow(QWidget *parent) :
           SLOT(mudaZ(int)));
           
   connect(ui->widget,
-          SIGNAL(transformarX(int)),
+          SIGNAL(mudaX(int)),
           ui->lcdNumberX,
           SLOT(display(int)));
 
   connect(ui->widget,
-          SIGNAL(transformarY(int)),
+          SIGNAL(mudaY(int)),
           ui->lcdNumberY,
           SLOT(display(int)));
 }

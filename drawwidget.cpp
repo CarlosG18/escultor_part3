@@ -4,18 +4,22 @@
 #include <QPen>
 #include <vector>
 #include <QDebug>
+#include <QMouseEvent>
 #include "Sculptor.h"
 
 DrawWidget::DrawWidget(QWidget *parent) : QWidget(parent) //construtor do DrawWidget
 {
   ncolunas = nlinhas = planoZ = 30;
+  setTamanho(nlinhas, ncolunas);
 }
 
 void DrawWidget::paintEvent(QPaintEvent *event)
 {
   int i, j;
-  Sculptor s(nlinhas,ncolunas,planoZ)
-  loadMatrix(s.getPlano(planoZ))
+  std::vector<std::vector<Voxel>> l;
+
+  Sculptor s(nlinhas,ncolunas,planoZ);
+  loadMatrix(s.getPlano(planoZ));
   
   QPainter painter(this); //"artista"
   QBrush brush; //"preenchimento"
@@ -27,28 +31,36 @@ void DrawWidget::paintEvent(QPaintEvent *event)
   brush.setColor(QColor(255,255,255));
   brush.setStyle(Qt::SolidPattern);
   pen.setColor(QColor(0,0,0));
-  pen.setWidth(2);
+  pen.setWidth(1);
   painter.setBrush(brush);
   painter.setPen(pen);
-  painter.drawRect(2,2,width()-2, height()-2);
   
-  for(int i=0; i<nlinhas; i++){
-    for(int j=0; j<ncolunas; j++){
+  for(i=0; i<nlinhas; i++){
+    for(j=0; j<ncolunas; j++){
       if(v[i][j].isOn == true){
         brush.setColor(QColor(v[i][j].r,v[i][j].g,v[i][j].b));
-		    //painter.drawEllipse(QPoint(i*(width()/n)+(width()/2*n),j*(height()/m)+(height()/2*m),10,10));
+        painter.setBrush(brush);
+        painter.drawRect(QRect(i*largCel,j*altCel,largCel,altCel));
       }else{
         brush.setColor(QColor(255,255,255));
-		    //painter.drawRect(i*width()/n,j*width()/m,width()/n,height()/m);
+        painter.setBrush(brush);
+        painter.drawRect(QRect(i*largCel,j*altCel,largCel,altCel));
       }
     }
   }
+
 }
 
 void DrawWidget::mousePressEvent(QMouseEvent *event){
-  //qDebug() << event->x() << event->y();
-  emit transformarX(event->x());
-  emit transformaY(event->y());
+  //qDebug() << event->x();
+  emit mudaX(event->x()/largCel);
+  emit mudaY(event->y()/altCel);
+}
+
+void DrawWidget::mouseMoveEvent(QMouseEvent *event)
+{
+    //emit mudaX(event->x());
+    //emit mudaY(event->y());
 }
 
 void DrawWidget::loadMatrix(std::vector<std::vector<Voxel>> l){
@@ -74,5 +86,8 @@ void DrawWidget::mudaZ(int z){
 }
 
 void DrawWidget::setTamanho(int nlinhas, int ncolunas){
-  
+  this->largTela = 651;
+  this->altTela = 411;
+  this->largCel = largTela/ncolunas;
+  this->altCel = altTela/nlinhas;
 }
