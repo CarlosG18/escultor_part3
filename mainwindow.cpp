@@ -28,6 +28,11 @@ MainWindow::MainWindow(QWidget *parent) :
           ui->widget,
           SLOT(setB(float)));
           
+  connect(ui->horizontalSliderRaio,
+          SIGNAL(valueChanged(int)),
+          ui->widget,
+          SLOT(setRaio(int)));
+          
   connect(ui->widget,
           SIGNAL(mudaX(int)),
           ui->lcdNumberX,

@@ -4,17 +4,24 @@
 
 #include <QWidget>
 
+/*enum Desenho{
+  putVoxel, cutVoxel, putBox, cutBox, putSphere, cutSphere, putEllipsoid, cutEllipsoid
+};*/
+
 class DrawWidget : public QWidget
 {
     Q_OBJECT
 private:
   std::vector<std::vector<Voxel>> v;
+  //Sculptor *s;
+  //Desenho modoDesenho;
   int nlinhas, ncolunas;
   int planoZ;
   int tamCel;
   int largTela, altTela;
   int largCel, altCel;
   float r, g, b, a;
+  int Raio;
   bool pressed;
 public:
   explicit DrawWidget(QWidget *parent = nullptr);
@@ -32,6 +39,7 @@ public slots:
   void setG(float g);
   void setB(float b);
   void setA(float a);
+  void setRaio(int raio);
 };
 
 #endif // DRAWWIDGET_H

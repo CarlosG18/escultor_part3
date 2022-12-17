@@ -10,17 +10,20 @@
 DrawWidget::DrawWidget(QWidget *parent) : QWidget(parent) //construtor do DrawWidget
 {
   ncolunas = nlinhas = planoZ = 30;
+  s = new Sculptor(nlinhas,ncolunas,planoZ);
   setTamanho(nlinhas, ncolunas);
 }
 
 void DrawWidget::paintEvent(QPaintEvent *event)
 {
   int i, j;
-  std::vector<std::vector<Voxel>> l;
+  //std::vector<std::vector<Voxel>> l;
 
-  Sculptor s(nlinhas,ncolunas,planoZ);
-  s.setColor(r,g,b,a);
-  loadMatrix(s.getPlano(planoZ));
+  //Sculptor s(nlinhas,ncolunas,planoZ);
+  //s.setColor(r,g,b,a);
+  //loadMatrix(s.getPlano(planoZ));
+  s->setColor(r,g,b,a);
+  loadMatrix(s->getPlano(planoZ));
   
   QPainter painter(this); //"artista"
   QBrush brush; //"preenchimento"
@@ -28,12 +31,9 @@ void DrawWidget::paintEvent(QPaintEvent *event)
     
   painter.setRenderHint(QPainter::Antialiasing);
     
-  //retângulo branco (área de desenho)
-  brush.setColor(QColor(255,255,255));
+  //configurações de desenho
   brush.setStyle(Qt::SolidPattern);
-  pen.setColor(QColor(0,0,0));
   pen.setWidth(1);
-  painter.setBrush(brush);
   painter.setPen(pen);
   
   for(i=0; i<nlinhas; i++){
@@ -53,10 +53,25 @@ void DrawWidget::paintEvent(QPaintEvent *event)
 }
 
 void DrawWidget::mousePressEvent(QMouseEvent *event){
-  //qDebug() << event->x();
   /*
+  if(modoDesenho == putVoxel){
+    s->putVoxel(event->x()/largCel,event->y()/altCel,planoZ);
+  }else if(modoDesenho == cutVoxel){
+    s->cutVoxel(event->x()/largCel,event->y()/altCel,planoZ);
+  }else if(modoDesenho == putBox){
+    s->putBox(event->x()/largCel,largBoxX,event->y()/altCel,altBoxY,planoZ,Zbox);
+  }else if(modoDesenho == cutBox){
+    s->cutBox(event->x()/largCel,largBoxX,event->y()/altCel,altBoxY,planoZ,Zbox);
+  }else if(modoDesenho == putSphere){
+    s->putSphere(event->x()/largCel,event->y()/altCel,planoZ,Raio);
+  }else if(modoDesenho == cutSphere){
+    s->cutSphere(event->x()/largCel,event->y()/altCel,planoZ,Raio);
+  }else if(modoDesenho == putEllipsoid){
+    s->putEllipsoid(event->x()/largCel,event->y()/altCel,planoZ,RaioX,RaioY,RaioZ);
+  }else if(modoDesenho == cutEllipsoid){
+    s->cutEllipsoid(event->x()/largCel,event->y()/altCel,planoZ,RaioX,RaioY,RaioZ);
+  }*/
   
-  */
   emit mudaX(event->x()/largCel);
   emit mudaY(event->y()/altCel);
 }
@@ -103,6 +118,10 @@ void DrawWidget::setB(float b){
 
 void DrawWidget::setB(float a){
   this->a = a;
+}
+
+void DrawWidget::setRaio(int raio){
+  this->Raio = raio;
 }
 
 void DrawWidget::setTamanho(int nlinhas, int ncolunas){
