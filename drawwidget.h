@@ -4,17 +4,17 @@
 
 #include <QWidget>
 
-/*enum Desenho{
+enum Desenho{
   putVoxel, cutVoxel, putBox, cutBox, putSphere, cutSphere, putEllipsoid, cutEllipsoid
-};*/
+};
 
 class DrawWidget : public QWidget
 {
     Q_OBJECT
 private:
   std::vector<std::vector<Voxel>> v;
-  //Sculptor *s;
-  //Desenho modoDesenho;
+  Sculptor *s;
+  Desenho modoDesenho;
   int nlinhas, ncolunas;
   int planoZ;
   int tamCel;
@@ -30,6 +30,7 @@ public:
   void mouseMoveEvent(QMouseEvent *event);
   void setTamanho(int nlinhas, int ncolunas);
   void loadMatrix(std::vector<std::vector<Voxel>> l);
+  void setSculptor(int x, int y, int z);
 signals:
   void mudaX(int x);
   void mudaY(int y);

@@ -130,3 +130,12 @@ void DrawWidget::setTamanho(int nlinhas, int ncolunas){
   this->largCel = largTela/ncolunas;
   this->altCel = altTela/nlinhas;
 }
+
+void DrawWidget::setSculptor(int x, int y, int z){
+  delete s;
+  this->nlinhas = x;
+  this->ncolunas = y;
+  this->planoZ = z;
+  s = new Sculptor(nlinhas,ncolunas,planoZ);
+  setTamanho(nlinhas, ncolunas);
+}

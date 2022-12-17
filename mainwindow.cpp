@@ -1,5 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "dialog.h"
+#include <QMessageBox>
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -42,11 +44,33 @@ MainWindow::MainWindow(QWidget *parent) :
           SIGNAL(mudaY(int)),
           ui->lcdNumberY,
           SLOT(display(int)));
+          
+  connect(ui->actionMudaDim,
+          SIGNAL(triggered()),
+          this,
+          SLOT(mudaDim()));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::mudaDim(){
+  Dialog d;
+  QMessageBox box;
+  QString s;
+  if (d.exec() == QDialog::Accepted){
+    s = QString("<b>X = </b>") +
+        QString().setNum(d.getX()) + QString("<br>")+
+        QString("<b>Y = </b>") +
+        QString().setNum(d.getY()) + QString("<br>")+
+        QString("<b>Z = </b>") +
+        QString().setNum(d.getZ()) + QString("<br>");
+
+    box.setText(s);
+    box.exec();
+    ui->widget->setSculptor(d.getX(), d.getY(), d.getZ());
 }
 
 //showMaximaded();
