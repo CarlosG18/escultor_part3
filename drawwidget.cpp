@@ -139,7 +139,7 @@ void DrawWidget::setTamanho(int nlinhas, int ncolunas){
 }
 
 void DrawWidget::setSculptor(int x, int y, int z){
-  delete s;
+  s->~Sculptor();
   this->nlinhas = x;
   this->ncolunas = y;
   this->planoZ = z;
