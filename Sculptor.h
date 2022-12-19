@@ -111,6 +111,7 @@ class Sculptor
        */
       void writeOFF(const char* filename);
       std::vector <std::vector<Voxel> > getPlano(int z);
+      void listCores();
 };
 
 #endif // SCULPTOR_H

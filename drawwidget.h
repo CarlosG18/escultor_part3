@@ -36,10 +36,9 @@ signals:
   void mudaY(int y);
 public slots:
   void mudaZ(int z);
-  void setR(float r);
-  void setG(float g);
-  void setB(float b);
-  void setA(float a);
+  void setR(int r);
+  void setG(int g);
+  void setB(int b);
   void setRaio(int raio);
 };
 

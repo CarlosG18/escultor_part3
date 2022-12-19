@@ -228,4 +228,9 @@ std::vector<std::vector<Voxel>> Sculptor::getPlano(int z){
   
 }
 
+void Sculptor::listCores()
+{
+    qDebug() << "red = " << r << " green = " << g << "blue = " << b;
+}
+
 

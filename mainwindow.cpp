@@ -18,17 +18,17 @@ MainWindow::MainWindow(QWidget *parent) :
   connect(ui->horizontalSliderR,
           SIGNAL(valueChanged(int)),
           ui->widget,
-          SLOT(setR(float)));
+          SLOT(setR(int)));
           
   connect(ui->horizontalSliderG,
           SIGNAL(valueChanged(int)),
           ui->widget,
-          SLOT(setG(float)));
+          SLOT(setG(int)));
           
   connect(ui->horizontalSliderB,
           SIGNAL(valueChanged(int)),
           ui->widget,
-          SLOT(setB(float)));
+          SLOT(setB(int)));
           
   connect(ui->horizontalSliderRaio,
           SIGNAL(valueChanged(int)),
@@ -45,10 +45,10 @@ MainWindow::MainWindow(QWidget *parent) :
           ui->lcdNumberY,
           SLOT(display(int)));
           
-  connect(ui->actionMudaDim,
+  /*connect(ui->actionMudaDim,
           SIGNAL(triggered()),
           this,
-          SLOT(mudaDim()));
+          SLOT(mudaDim()));*/
 }
 
 MainWindow::~MainWindow()
@@ -56,7 +56,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::mudaDim(){
+/*void MainWindow::mudaDim(){
   Dialog d;
   QMessageBox box;
   QString s;
@@ -71,6 +71,7 @@ void MainWindow::mudaDim(){
     box.setText(s);
     box.exec();
     ui->widget->setSculptor(d.getX(), d.getY(), d.getZ());
-}
+  }
+}*/
 
 //showMaximaded();
