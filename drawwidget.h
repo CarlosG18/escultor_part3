@@ -40,6 +40,15 @@ public slots:
   void setG(int g);
   void setB(int b);
   void setRaio(int raio);
+  void salvar();
+  void mudaDesenhoPV();
+  void mudaDesenhoCV();
+  void mudaDesenhoPB();
+  void mudaDesenhoCB();
+  void mudaDesenhoPS();
+  void mudaDesenhoCS();
+  void mudaDesenhoPE();
+  void mudaDesenhoCE();
 };
 
 #endif // DRAWWIDGET_H

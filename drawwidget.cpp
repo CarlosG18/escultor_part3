@@ -12,10 +12,8 @@ DrawWidget::DrawWidget(QWidget *parent) : QWidget(parent) //construtor do DrawWi
   ncolunas = nlinhas = planoZ = 30;
   s = new Sculptor(nlinhas,ncolunas,planoZ);
   setTamanho(nlinhas, ncolunas);
-  a = 1;
+  a = 1.0;
   planoZ = 1;
-  r = g = b = 0;
-  s->setColor(r,g,b,a);
   loadMatrix(s->getPlano(planoZ));
 }
 
@@ -25,7 +23,7 @@ void DrawWidget::paintEvent(QPaintEvent *event)
   QPainter painter(this); //"artista"
   QBrush brush; //"preenchimento"
   QPen pen; //"contorno"
-    
+
   painter.setRenderHint(QPainter::Antialiasing);
     
   //configurações de desenho
@@ -51,31 +49,30 @@ void DrawWidget::paintEvent(QPaintEvent *event)
 
 void DrawWidget::mousePressEvent(QMouseEvent *event){
 
-  s->setColor(r,g,b,a);
+  //s->setColor(r,g,b,a);
   s->putVoxel(event->x()/largCel,event->y()/altCel,planoZ);
   loadMatrix(s->getPlano(planoZ));
-  repaint();
-    /*
+  //repaint();
   if(modoDesenho == putVoxel){
     s->putVoxel(event->x()/largCel,event->y()/altCel,planoZ);
   }else if(modoDesenho == cutVoxel){
     s->cutVoxel(event->x()/largCel,event->y()/altCel,planoZ);
   }else if(modoDesenho == putBox){
-    s->putBox(event->x()/largCel,largBoxX,event->y()/altCel,altBoxY,planoZ,Zbox);
+    s->putBox(event->x()/largCel,10,event->y()/altCel,10,planoZ,10);
   }else if(modoDesenho == cutBox){
-    s->cutBox(event->x()/largCel,largBoxX,event->y()/altCel,altBoxY,planoZ,Zbox);
+    s->cutBox(event->x()/largCel,10,event->y()/altCel,10,planoZ,10);
   }else if(modoDesenho == putSphere){
     s->putSphere(event->x()/largCel,event->y()/altCel,planoZ,Raio);
   }else if(modoDesenho == cutSphere){
     s->cutSphere(event->x()/largCel,event->y()/altCel,planoZ,Raio);
   }else if(modoDesenho == putEllipsoid){
-    s->putEllipsoid(event->x()/largCel,event->y()/altCel,planoZ,RaioX,RaioY,RaioZ);
+    s->putEllipsoid(event->x()/largCel,event->y()/altCel,planoZ,10,10,10);
   }else if(modoDesenho == cutEllipsoid){
-    s->cutEllipsoid(event->x()/largCel,event->y()/altCel,planoZ,RaioX,RaioY,RaioZ);
-  }*/
+    s->cutEllipsoid(event->x()/largCel,event->y()/altCel,planoZ,10,10,10);
+  }
 
-  s->listCores();
-  s->writeOFF("teste1.off");
+  //s->listCores();
+
 
   emit mudaX(event->x()/largCel);
   emit mudaY(event->y()/altCel);
@@ -111,24 +108,59 @@ void DrawWidget::mudaZ(int z){
 
 void DrawWidget::setR(int r){
   this->r = r;
-    s->setColor(r,g,b,a);
+  s->setColor(r,g,b,a);
   repaint();
 }
 
 void DrawWidget::setG(int g){
   this->g = g;
-    s->setColor(r,g,b,a);
+  s->setColor(r,g,b,a);
   repaint();
 }
 
 void DrawWidget::setB(int b){
   this->b = b;
-    s->setColor(r,g,b,a);
+  s->setColor(r,g,b,a);
   repaint();
 }
 
 void DrawWidget::setRaio(int raio){
-  this->Raio = raio;
+    this->Raio = raio;
+}
+
+void DrawWidget::salvar()
+{
+    s->writeOFF("teste1.off");
+}
+
+void DrawWidget::mudaDesenhoPV()
+{
+   this->modoDesenho = putVoxel;
+}
+
+void DrawWidget::mudaDesenhoCV()
+{
+   this->modoDesenho = putVoxel;
+}
+
+void DrawWidget::mudaDesenhoPV()
+{
+   this->modoDesenho = putVoxel;
+}
+
+void DrawWidget::mudaDesenhoPV()
+{
+   this->modoDesenho = putVoxel;
+}
+
+void DrawWidget::mudaDesenhoPV()
+{
+   this->modoDesenho = putVoxel;
+}
+
+void DrawWidget::mudaDesenhoPV()
+{
+   this->modoDesenho = putVoxel;
 }
 
 void DrawWidget::setTamanho(int nlinhas, int ncolunas){
@@ -139,7 +171,7 @@ void DrawWidget::setTamanho(int nlinhas, int ncolunas){
 }
 
 void DrawWidget::setSculptor(int x, int y, int z){
-  s->~Sculptor();
+  delete s;
   this->nlinhas = x;
   this->ncolunas = y;
   this->planoZ = z;

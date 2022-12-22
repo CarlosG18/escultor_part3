@@ -34,16 +34,18 @@ MainWindow::MainWindow(QWidget *parent) :
           SIGNAL(valueChanged(int)),
           ui->widget,
           SLOT(setRaio(int)));
-          
-  connect(ui->widget,
-          SIGNAL(mudaX(int)),
-          ui->lcdNumberX,
-          SLOT(display(int)));
 
-  connect(ui->widget,
-          SIGNAL(mudaY(int)),
-          ui->lcdNumberY,
-          SLOT(display(int)));
+  connect(ui->pushButton,
+          SIGNAL(clicked(bool)),
+          ui->widget,
+          SLOT(salvar()));
+
+  connect(ui->radioButtonPV,
+          SIGNAL(toggled(bool)),
+          ui->widget,
+          SLOT(mudaDesenhoPV(int)));
+
+
           
   /*connect(ui->actionMudaDim,
           SIGNAL(triggered()),
