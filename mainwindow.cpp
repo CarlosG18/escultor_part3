@@ -43,9 +43,42 @@ MainWindow::MainWindow(QWidget *parent) :
   connect(ui->radioButtonPV,
           SIGNAL(toggled(bool)),
           ui->widget,
-          SLOT(mudaDesenhoPV(int)));
+          SLOT(mudaDesenhoPV()));
 
+  connect(ui->radioButtonCV,
+          SIGNAL(toggled(bool)),
+          ui->widget,
+          SLOT(mudaDesenhoCV()));
 
+  connect(ui->radioButtonPB,
+          SIGNAL(toggled(bool)),
+          ui->widget,
+          SLOT(mudaDesenhoPB()));
+          
+  connect(ui->radioButtonCB,
+          SIGNAL(toggled(bool)),
+          ui->widget,
+          SLOT(mudaDesenhoCB()));
+          
+  connect(ui->radioButtonPS,
+          SIGNAL(toggled(bool)),
+          ui->widget,
+          SLOT(mudaDesenhoPS()));
+          
+  connect(ui->radioButtonCS,
+          SIGNAL(toggled(bool)),
+          ui->widget,
+          SLOT(mudaDesenhoCS()));
+          
+  connect(ui->radioButtonPE,
+          SIGNAL(toggled(bool)),
+          ui->widget,
+          SLOT(mudaDesenhoPE()));
+          
+  connect(ui->radioButtonCE,
+          SIGNAL(toggled(bool)),
+          ui->widget,
+          SLOT(mudaDesenhoCE()));
           
   /*connect(ui->actionMudaDim,
           SIGNAL(triggered()),

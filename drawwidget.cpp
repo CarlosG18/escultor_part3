@@ -49,10 +49,8 @@ void DrawWidget::paintEvent(QPaintEvent *event)
 
 void DrawWidget::mousePressEvent(QMouseEvent *event){
 
-  //s->setColor(r,g,b,a);
-  s->putVoxel(event->x()/largCel,event->y()/altCel,planoZ);
   loadMatrix(s->getPlano(planoZ));
-  //repaint();
+  
   if(modoDesenho == putVoxel){
     s->putVoxel(event->x()/largCel,event->y()/altCel,planoZ);
   }else if(modoDesenho == cutVoxel){
@@ -70,10 +68,7 @@ void DrawWidget::mousePressEvent(QMouseEvent *event){
   }else if(modoDesenho == cutEllipsoid){
     s->cutEllipsoid(event->x()/largCel,event->y()/altCel,planoZ,10,10,10);
   }
-
-  //s->listCores();
-
-
+  
   emit mudaX(event->x()/largCel);
   emit mudaY(event->y()/altCel);
 }
@@ -140,27 +135,37 @@ void DrawWidget::mudaDesenhoPV()
 
 void DrawWidget::mudaDesenhoCV()
 {
-   this->modoDesenho = putVoxel;
+   this->modoDesenho = cutVoxel;
 }
 
-void DrawWidget::mudaDesenhoPV()
+void DrawWidget::mudaDesenhoPB()
 {
-   this->modoDesenho = putVoxel;
+   this->modoDesenho = putBox;
 }
 
-void DrawWidget::mudaDesenhoPV()
+void DrawWidget::mudaDesenhoCB()
 {
-   this->modoDesenho = putVoxel;
+   this->modoDesenho = cutBox;
 }
 
-void DrawWidget::mudaDesenhoPV()
+void DrawWidget::mudaDesenhoPS()
 {
-   this->modoDesenho = putVoxel;
+   this->modoDesenho = putSphere;
 }
 
-void DrawWidget::mudaDesenhoPV()
+void DrawWidget::mudaDesenhoCS()
 {
-   this->modoDesenho = putVoxel;
+   this->modoDesenho = cutSphere;
+}
+
+void DrawWidget::mudaDesenhoPE()
+{
+   this->modoDesenho = putEllipsoid;
+}
+
+void DrawWidget::mudaDesenhoCE()
+{
+   this->modoDesenho = cutEllipsoid;
 }
 
 void DrawWidget::setTamanho(int nlinhas, int ncolunas){
