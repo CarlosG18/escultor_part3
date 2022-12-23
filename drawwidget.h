@@ -31,6 +31,7 @@ public:
   void setTamanho(int nlinhas, int ncolunas);
   void loadMatrix(std::vector<std::vector<Voxel>> l);
   void setSculptor(int x, int y, int z);
+  void apagaMatrix();
 signals:
   void mudaX(int x);
   void mudaY(int y);

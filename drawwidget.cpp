@@ -49,24 +49,36 @@ void DrawWidget::paintEvent(QPaintEvent *event)
 
 void DrawWidget::mousePressEvent(QMouseEvent *event){
 
-  loadMatrix(s->getPlano(planoZ));
-  
   if(modoDesenho == putVoxel){
     s->putVoxel(event->x()/largCel,event->y()/altCel,planoZ);
+    loadMatrix(s->getPlano(planoZ));
+    repaint();
   }else if(modoDesenho == cutVoxel){
     s->cutVoxel(event->x()/largCel,event->y()/altCel,planoZ);
   }else if(modoDesenho == putBox){
     s->putBox(event->x()/largCel,10,event->y()/altCel,10,planoZ,10);
+    loadMatrix(s->getPlano(planoZ));
+    repaint();
   }else if(modoDesenho == cutBox){
     s->cutBox(event->x()/largCel,10,event->y()/altCel,10,planoZ,10);
+    loadMatrix(s->getPlano(planoZ));
+    repaint();
   }else if(modoDesenho == putSphere){
     s->putSphere(event->x()/largCel,event->y()/altCel,planoZ,Raio);
+    loadMatrix(s->getPlano(planoZ));
+    repaint();
   }else if(modoDesenho == cutSphere){
     s->cutSphere(event->x()/largCel,event->y()/altCel,planoZ,Raio);
+    loadMatrix(s->getPlano(planoZ));
+    repaint();
   }else if(modoDesenho == putEllipsoid){
     s->putEllipsoid(event->x()/largCel,event->y()/altCel,planoZ,10,10,10);
+    loadMatrix(s->getPlano(planoZ));
+    repaint();
   }else if(modoDesenho == cutEllipsoid){
     s->cutEllipsoid(event->x()/largCel,event->y()/altCel,planoZ,10,10,10);
+    loadMatrix(s->getPlano(planoZ));
+    repaint();
   }
   
   emit mudaX(event->x()/largCel);
@@ -182,4 +194,14 @@ void DrawWidget::setSculptor(int x, int y, int z){
   this->planoZ = z;
   s = new Sculptor(nlinhas,ncolunas,planoZ);
   setTamanho(nlinhas, ncolunas);
+}
+
+void DrawWidget::apagaMatrix(){
+  int i,j;
+  
+  for(i = 0; i<nlinhas; i++){
+    for(j = 0; j<ncolunas; j++){
+      matriz[i].erase(matriz[i].begin());
+    }
+  }
 }
