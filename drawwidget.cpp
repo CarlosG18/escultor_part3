@@ -51,32 +51,42 @@ void DrawWidget::mousePressEvent(QMouseEvent *event){
 
   if(modoDesenho == putVoxel){
     s->putVoxel(event->x()/largCel,event->y()/altCel,planoZ);
+    apagaMatrix();
     loadMatrix(s->getPlano(planoZ));
     repaint();
   }else if(modoDesenho == cutVoxel){
     s->cutVoxel(event->x()/largCel,event->y()/altCel,planoZ);
+    apagaMatrix();
+    loadMatrix(s->getPlano(planoZ));
+    repaint();
   }else if(modoDesenho == putBox){
     s->putBox(event->x()/largCel,10,event->y()/altCel,10,planoZ,10);
+    apagaMatrix();
     loadMatrix(s->getPlano(planoZ));
     repaint();
   }else if(modoDesenho == cutBox){
     s->cutBox(event->x()/largCel,10,event->y()/altCel,10,planoZ,10);
+    apagaMatrix();
     loadMatrix(s->getPlano(planoZ));
     repaint();
   }else if(modoDesenho == putSphere){
     s->putSphere(event->x()/largCel,event->y()/altCel,planoZ,Raio);
+    apagaMatrix();
     loadMatrix(s->getPlano(planoZ));
     repaint();
   }else if(modoDesenho == cutSphere){
     s->cutSphere(event->x()/largCel,event->y()/altCel,planoZ,Raio);
+    apagaMatrix();
     loadMatrix(s->getPlano(planoZ));
     repaint();
   }else if(modoDesenho == putEllipsoid){
     s->putEllipsoid(event->x()/largCel,event->y()/altCel,planoZ,10,10,10);
+    apagaMatrix();
     loadMatrix(s->getPlano(planoZ));
     repaint();
   }else if(modoDesenho == cutEllipsoid){
     s->cutEllipsoid(event->x()/largCel,event->y()/altCel,planoZ,10,10,10);
+    apagaMatrix();
     loadMatrix(s->getPlano(planoZ));
     repaint();
   }
